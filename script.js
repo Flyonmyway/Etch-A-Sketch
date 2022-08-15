@@ -28,16 +28,20 @@ function main() {
         gridItem.setAttribute('style','border: 1px solid; border-color: #94B49F;')
         //color changed when mouse onclick the squares
         gridItem.addEventListener('mousedown', () => {
-            const color = document.querySelector('#colorPicker').value;
-                gridItem.style.backgroundColor = color;
+        //implement color as picked
+            colorPick();
         }) ;
 
         gridItem.addEventListener('mouseover', () => {
             if (isMouseDown) {
-                const color = document.querySelector('#colorPicker').value;
-                gridItem.style.backgroundColor = color;
+                colorPick();
             }
         });
+
+        function colorPick() {
+            const color = document.querySelector('#colorPicker').value;
+            gridItem.style.backgroundColor = color;
+        }
 
         //eraser
         eraser_btn.addEventListener('click', () => {
@@ -48,15 +52,19 @@ function main() {
             gridItem.addEventListener('mouseover', () => {
                 if (isMouseDown) {
                     gridItem.setAttribute('style','border: 1px solid; border-color: #94B49F; background-color: none;');
-                }
+                } 
             });
         });
+        
         
         //clear  all
         clear_btn.addEventListener('click', () => {
             gridItem.setAttribute('style','border: 1px solid; border-color: #94B49F; background-color: none;');
          });
     }
+
+
+
 }
 
 main();
