@@ -8,6 +8,7 @@ container_div.setAttribute('style', 'display: inline-grid; background: white; bo
 leftside_div.setAttribute('style','width: 300px; border: solid; border-color: #94B49F; margin-left: 200px;')
 const clear_btn = document.querySelector('.clear');
 const eraser_btn = document.querySelector('.eraser');
+const pen_btn = document.querySelector('.pen')
 
 let isMouseDown = false;
 window.onmousedown = () => (isMouseDown = true);
@@ -17,8 +18,8 @@ function main() {
     const gridSize = prompt("What size you want?")
     container_div.style.gridTemplateColumns =  `repeat(${gridSize}, 1fr)`;
     container_div.style.gridTemplateRows =  `repeat(${gridSize}, 1fr)`;
-    if (gridSize > 100) {
-        alert("Too large");
+    if (gridSize > 100|| gridSize <= 0) {
+        alert("Not right");
     }
 
     for (let i = 0; i < (gridSize ** 2); i++) {
@@ -28,7 +29,6 @@ function main() {
         gridItem.setAttribute('style','border: 1px solid; border-color: #94B49F;')
         //color changed when mouse onclick the squares
         gridItem.addEventListener('mousedown', () => {
-        //implement color as picked
             colorPick();
         }) ;
 
@@ -43,29 +43,41 @@ function main() {
             gridItem.style.backgroundColor = color;
         }
 
-        //eraser
-        eraser_btn.addEventListener('click', () => {
+        //turn on eraser 
+        eraser_btn.addEventListener('click', (useEraser));
+        
+        function useEraser () {
+            eraser_btn.setAttribute('style','background: red;');
             gridItem.addEventListener('mousedown', () => {
-                gridItem.setAttribute('style','border: 1px solid; border-color: #94B49F; background-color: none;');
+                eraser();
             }) ;
     
             gridItem.addEventListener('mouseover', () => {
                 if (isMouseDown) {
-                    gridItem.setAttribute('style','border: 1px solid; border-color: #94B49F; background-color: none;');
+                    eraser();
                 } 
             });
-        });
+
+            function eraser () {
+                gridItem.setAttribute('style','border: 1px solid; border-color: #94B49F; background-color: none;');
+            
+            };
+
+        // click pen button  
         
-        
+        pen_btn.addEventListener('click', () => {
+            pen_btn.setAttribute('style','background: red;');
+            //delete useEraser????????
+
+        })
+
         //clear  all
         clear_btn.addEventListener('click', () => {
             gridItem.setAttribute('style','border: 1px solid; border-color: #94B49F; background-color: none;');
          });
     }
 
-
-
+}
 }
 
 main();
-
