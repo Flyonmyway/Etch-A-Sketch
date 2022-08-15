@@ -28,14 +28,17 @@ function main() {
         gridItem.setAttribute('style','border: 1px solid; border-color: #94B49F;')
         //color changed when mouse onclick the squares
         gridItem.addEventListener('mousedown', () => {
-            gridItem.setAttribute('style','border: 1px solid; border-color: #94B49F; background-color: #94B49F;');
+            const color = document.querySelector('#colorPicker').value;
+                gridItem.style.backgroundColor = color;
         }) ;
 
         gridItem.addEventListener('mouseover', () => {
             if (isMouseDown) {
-                gridItem.setAttribute('style','border: 1px solid; border-color: #94B49F; background-color: #94B49F;');
+                const color = document.querySelector('#colorPicker').value;
+                gridItem.style.backgroundColor = color;
             }
         });
+
         //eraser
         eraser_btn.addEventListener('click', () => {
             gridItem.addEventListener('mousedown', () => {
