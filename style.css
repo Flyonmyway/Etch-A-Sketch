@@ -39,3 +39,8 @@ button:hover {
     box-shadow: #121212 0 0 0 3px, transparent 0 0 0 0;
 }
 
+
+
+.clear:active {
+    background-color: red;
+ }

@@ -29,6 +29,10 @@ function main() {
         gridItem.classList.add('gridItem');
         container_div.appendChild(gridItem);
         gridItem.setAttribute('style','border: 1px solid; border-color: #94B49F;')
+
+        clear_btn.addEventListener('click', () => {
+            gridItem.setAttribute('style','border: 1px solid; border-color: #94B49F; background-color: none;');
+         });
         //color changed when mouse onclick the squares
         gridItem.addEventListener('mousedown', () => {
             colorPick();
@@ -84,12 +88,11 @@ function main() {
         })
 
         //clear  all
-        clear_btn.addEventListener('click', () => {
-            gridItem.setAttribute('style','border: 1px solid; border-color: #94B49F; background-color: none;');
-         });
     }
 
 }
 }
 
 main();
+
+
