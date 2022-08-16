@@ -22,7 +22,7 @@ function main() {
         alert("Not right");
     }
 
-    pen_btn.setAttribute('style','background: red;');
+    pen_btn.setAttribute('style','background: #ECB390;');
 
     for (let i = 0; i < (gridSize ** 2); i++) {
         const gridItem = document.createElement('div');
@@ -53,7 +53,7 @@ function main() {
         eraser_btn.addEventListener('click', (useEraser));
         
         function useEraser () {
-            eraser_btn.setAttribute('style','background: red;');
+            eraser_btn.setAttribute('style','background: #ECB390;');
             pen_btn.setAttribute('style','background: white;');
             gridItem.addEventListener('mousedown', () => {
                 eraser();
@@ -73,7 +73,7 @@ function main() {
         // click pen button  
         
         pen_btn.addEventListener('click', () => {
-            pen_btn.setAttribute('style','background: red;');
+            pen_btn.setAttribute('style','background: #ECB390;');
             eraser_btn.setAttribute('style','background: white;');
             gridItem.addEventListener('mousedown', () => {
                 colorPick();
@@ -86,8 +86,6 @@ function main() {
             });
 
         })
-
-        //clear  all
     }
 
 }
