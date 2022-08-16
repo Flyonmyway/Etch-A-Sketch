@@ -8,7 +8,7 @@ container_div.setAttribute('style', 'display: inline-grid; background: white; bo
 leftside_div.setAttribute('style','width: 300px; border: solid; border-color: #94B49F; margin-left: 200px;')
 const clear_btn = document.querySelector('.clear');
 const eraser_btn = document.querySelector('.eraser');
-const pen_btn = document.querySelector('.pen')
+const pen_btn = document.querySelector('.pen') 
 
 let isMouseDown = false;
 window.onmousedown = () => (isMouseDown = true);
@@ -21,6 +21,8 @@ function main() {
     if (gridSize > 100|| gridSize <= 0) {
         alert("Not right");
     }
+
+    pen_btn.setAttribute('style','background: red;');
 
     for (let i = 0; i < (gridSize ** 2); i++) {
         const gridItem = document.createElement('div');
@@ -48,6 +50,7 @@ function main() {
         
         function useEraser () {
             eraser_btn.setAttribute('style','background: red;');
+            pen_btn.setAttribute('style','background: white;');
             gridItem.addEventListener('mousedown', () => {
                 eraser();
             }) ;
@@ -67,7 +70,16 @@ function main() {
         
         pen_btn.addEventListener('click', () => {
             pen_btn.setAttribute('style','background: red;');
-            //delete useEraser????????
+            eraser_btn.setAttribute('style','background: white;');
+            gridItem.addEventListener('mousedown', () => {
+                colorPick();
+            }) ;
+    
+            gridItem.addEventListener('mouseover', () => {
+                if (isMouseDown) {
+                    colorPick();
+                } 
+            });
 
         })
 
